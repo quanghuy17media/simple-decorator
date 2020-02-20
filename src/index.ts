@@ -2,6 +2,8 @@ import 'reflect-metadata';
 import express, { Request, Response } from 'express';
 import cors from 'cors';
 import config from 'config';
+import { IRouteDefinition } from 'vmo/common';
+import * as MainController from './controllers';
 
 const main = async () => {
   global.gConfig = config.get('appConfig');
@@ -15,8 +17,21 @@ const main = async () => {
 
   app.use(cors(corsConfig));
 
-  app.get('/', (req: Request, res: Response) => {
-    res.send('Meooo!');
+  Object.values(MainController).forEach(Controller => {
+    const instance = new Controller();
+    const prefix = Reflect.getMetadata('prefix', Controller);
+    const routes: IRouteDefinition[] = Reflect.getMetadata(
+      'routes',
+      Controller,
+    );
+    routes.forEach(route => {
+      app[route.requestMethod](
+        prefix + route.path,
+        (req: Request, res: Response) => {
+          (instance as any)[route.methodName](req, res);
+        },
+      );
+    });
   });
 
   app.listen(nodePort, () => {
