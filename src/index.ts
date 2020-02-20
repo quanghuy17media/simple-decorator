@@ -3,7 +3,7 @@ import express, { Request, Response } from 'express';
 import cors from 'cors';
 import config from 'config';
 import { IRouteDefinition } from 'vmo/common';
-import * as MainController from './controllers';
+import * as vControllers from './controllers';
 
 const main = async () => {
   global.gConfig = config.get('appConfig');
@@ -17,13 +17,10 @@ const main = async () => {
 
   app.use(cors(corsConfig));
 
-  Object.values(MainController).forEach(Controller => {
-    const instance = new Controller();
-    const prefix = Reflect.getMetadata('prefix', Controller);
-    const routes: IRouteDefinition[] = Reflect.getMetadata(
-      'routes',
-      Controller,
-    );
+  Object.values(vControllers).forEach(Ctl => {
+    const instance = new Ctl();
+    const prefix = Reflect.getMetadata('vPrefix', Ctl);
+    const routes: IRouteDefinition[] = Reflect.getMetadata('vRoutes', Ctl);
     routes.forEach(route => {
       app[route.requestMethod](
         prefix + route.path,

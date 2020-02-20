@@ -1,8 +1,8 @@
-export const Controller = (prefix: string): ClassDecorator => {
+export const VmoController = (prefix: string): ClassDecorator => {
   return target => {
-    Reflect.defineMetadata('prefix', prefix, target);
-    if (!Reflect.hasMetadata('routes', target)) {
-      Reflect.defineMetadata('routes', [], target);
+    Reflect.defineMetadata('vPrefix', prefix, target);
+    if (!Reflect.hasMetadata('vRoutes', target)) {
+      Reflect.defineMetadata('vRoutes', [], target);
     }
   };
 };

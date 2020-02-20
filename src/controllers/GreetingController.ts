@@ -1,9 +1,9 @@
 import { Request, Response } from 'express';
-import { ControllerAction, Controller, RequestMethod } from 'vmo/common';
+import { VmoControllerAction, VmoController, RequestMethod } from 'vmo/common';
 
-@Controller('/greeting')
+@VmoController('/greeting')
 export class GreetingController {
-  @ControllerAction({ method: RequestMethod.Get, path: '/' })
+  @VmoControllerAction({ method: RequestMethod.Get, path: '/' })
   getAll(_req: Request, res: Response) {
     return res.json({
       message: 'Hello',

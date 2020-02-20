@@ -1,15 +1,15 @@
 import { IRouteDefinition, IControllerAction } from './Route.definition';
 
-export const ControllerAction = ({
+export const VmoControllerAction = ({
   method,
   path,
 }: IControllerAction): MethodDecorator => {
   return (target, propertyKey) => {
-    if (!Reflect.hasMetadata('routes', target.constructor)) {
-      Reflect.defineMetadata('routes', [], target.constructor);
+    if (!Reflect.hasMetadata('vRoutes', target.constructor)) {
+      Reflect.defineMetadata('vRoutes', [], target.constructor);
     }
     const routes: IRouteDefinition[] = Reflect.getMetadata(
-      'routes',
+      'vRoutes',
       target.constructor,
     );
     routes.push({
@@ -17,6 +17,6 @@ export const ControllerAction = ({
       path,
       methodName: propertyKey,
     });
-    Reflect.defineMetadata('routes', routes, target.constructor);
+    Reflect.defineMetadata('vRoutes', routes, target.constructor);
   };
 };
