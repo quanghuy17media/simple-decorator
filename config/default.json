@@ -1,0 +1,8 @@
+{
+  "appConfig": {
+    "configId": "development",
+    "nodeHost": "localhost",
+    "nodePort": 4000,
+    "clientUrl": "http://localhost:3000"
+  }
+}

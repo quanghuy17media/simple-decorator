@@ -1,0 +1,10 @@
+node_modules
+config/production.json
+config/staging.json
+config/development.json
+
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+.DS_Store
