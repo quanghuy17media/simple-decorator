@@ -1,14 +1,12 @@
 import 'reflect-metadata';
 import express, { Request, Response } from 'express';
 import cors from 'cors';
-import config from 'config';
+import './global.cfg';
 import { IRouteDefinition } from 'vmo/common';
 import * as vControllers from './controllers';
 
 const main = async () => {
-  global.gConfig = config.get('appConfig');
   const { configId, nodePort, nodeHost } = global.gConfig;
-
   const app = express();
   const corsConfig = {
     credentials: true,

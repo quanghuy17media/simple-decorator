@@ -3,6 +3,10 @@
     "configId": "development",
     "nodeHost": "localhost",
     "nodePort": 4000,
-    "clientUrl": "http://localhost:3000"
+    "clientUrl": "http://localhost:3000",
+    "elasticUri": "https://elk-dev-9200.dpoter.com/",
+    "elasticAuthorization": "Basic bGlvbjpsaW9uMTIzNDU2",
+    "elasticUsername": "elastic",
+    "elasticPass": "Creative"
   }
 }
