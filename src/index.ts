@@ -1,6 +1,7 @@
 import 'reflect-metadata';
 import express, { Request, Response } from 'express';
 import cors from 'cors';
+import bodyParser from 'body-parser';
 import './global.cfg';
 import { IRouteDefinition } from 'vmo/common';
 import * as vControllers from './controllers';
@@ -14,6 +15,8 @@ const main = async () => {
   };
 
   app.use(cors(corsConfig));
+  app.use(bodyParser.urlencoded({ extended: false }));
+  app.use(bodyParser.json());
 
   Object.values(vControllers).forEach(Ctl => {
     const instance = new Ctl();

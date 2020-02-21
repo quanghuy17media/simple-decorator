@@ -381,7 +381,7 @@ bcryptjs@^2.4.3:
   resolved "https://registry.yarnpkg.com/bcryptjs/-/bcryptjs-2.4.3.tgz#9ab5627b93e60621ff7cdac5da9733027df1d0cb"
   integrity sha1-mrVie5PmBiH/fNrF2pczAn3x0Ms=
 
-body-parser@1.19.0:
+body-parser@1.19.0, body-parser@^1.19.0:
   version "1.19.0"
   resolved "https://registry.yarnpkg.com/body-parser/-/body-parser-1.19.0.tgz#96b2709e57c9c4e09a6fd66a8fd979844f69f08a"
   integrity sha512-dhEPs72UPbDnAQJ9ZKMNTP6ptJaionhP5cBb541nXPlW60Jepo9RV/a4fX4XWW9CuFNK22krhrj1+rgzifNCsw==
@@ -1516,6 +1516,11 @@ into-stream@^5.1.0:
   dependencies:
     from2 "^2.3.0"
     p-is-promise "^3.0.0"
+
+inversify@^5.0.1:
+  version "5.0.1"
+  resolved "https://registry.yarnpkg.com/inversify/-/inversify-5.0.1.tgz#500d709b1434896ce5a0d58915c4a4210e34fb6e"
+  integrity sha512-Ieh06s48WnEYGcqHepdsJUIJUXpwH5o5vodAX+DK2JA/gjy4EbEcQZxw+uFfzysmKjiLXGYwNG3qDZsKVMcINQ==
 
 ipaddr.js@1.9.0:
   version "1.9.0"
