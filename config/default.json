@@ -7,6 +7,9 @@
     "elasticUri": "https://elk-dev-9200.dpoter.com/",
     "elasticAuthorization": "Basic bGlvbjpsaW9uMTIzNDU2",
     "elasticUsername": "elastic",
-    "elasticPass": "Creative"
+    "elasticPass": "Creative",
+    "amqpUri": "192.168.3.7",
+    "amqpUser": "rabbitmq",
+    "amqpPass": "rabbitmq"
   }
 }

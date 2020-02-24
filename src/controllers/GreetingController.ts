@@ -1,5 +1,6 @@
 import { Request, Response } from 'express';
 import { VmoControllerAction, VmoController, RequestMethod } from 'vmo/common';
+import amqp from 'amqplib';
 import { checkHealth, indexData, search } from '../services/test.service';
 import { IIndexSomeDataReq, ISearchReq } from '../types/customTypes';
 
@@ -34,6 +35,25 @@ export class GreetingController {
     // };
     const data = await search(req.body);
     return res.json({ data });
+  }
+
+  @VmoControllerAction({ method: RequestMethod.Post, path: '/send' })
+  async send(req: Request, res: Response) {
+    try {
+      const connect = await amqp.connect({
+        hostname: global.gConfig.amqpUri,
+        username: global.gConfig.amqpUser,
+        password: global.gConfig.amqpPass,
+      });
+      const q = 'vQueues';
+      const ch = await connect.createChannel();
+      await ch.assertQueue(q);
+      ch.sendToQueue(q, Buffer.from('something to do'));
+    } catch (e) {
+      console.log('TCL: GreetingController -> send -> e', e);
+      return res.json(e);
+    }
+    return res.json({ data: 1 });
   }
 
   // @VmoControllerAction({ method: RequestMethod.Get, path: '/test' })
